@@ -3,7 +3,7 @@ import { addItem } from '../store/cartSlice'
 import Produto from '../components/Produto'
 import * as S from './styles'
 
-const ProdutosComponent = ({ produtos, favoritos, favoritar }) => {
+const ProdutosComponent = ({ produtos, favoritos, favoritar, adicionarAoCarrinho }) => {
   const dispatch = useDispatch()
 
   const produtoEstaNosFavoritos = (produto) => {
@@ -12,9 +12,12 @@ const ProdutosComponent = ({ produtos, favoritos, favoritar }) => {
     return IdsDosFavoritos.includes(produtoId)
   }
 
-  const adicionarAoCarrinho = (produto) => {
+  const dispatchAdicionarAoCarrinho = (produto) => {
     dispatch(addItem(produto))
   }
+
+  const handleAdicionarAoCarrinho =
+    adicionarAoCarrinho ?? dispatchAdicionarAoCarrinho
 
   return (
     <S.Produtos>
@@ -24,7 +27,7 @@ const ProdutosComponent = ({ produtos, favoritos, favoritar }) => {
           produto={produto}
           estaNosFavoritos={produtoEstaNosFavoritos(produto)}
           favoritar={favoritar}
-          aoComprar={adicionarAoCarrinho}
+          aoComprar={handleAdicionarAoCarrinho}
         />
       ))}
     </S.Produtos>

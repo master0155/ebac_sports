@@ -1,8 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { store as internalStore } from './src/store';
 
-export const store = configureStore({
-  reducer: {}, // adicione seus reducers aqui
-});
+export const store = internalStore;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
