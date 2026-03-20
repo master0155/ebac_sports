@@ -4,14 +4,16 @@ import { Produto } from '../../App'
 
 import cesta from '../../assets/cesta.png'
 import { paraReal } from '../Produto'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
+import { clearCart } from '../../src/store/cartSlice'
 
 type Props = {
   favoritos: Produto[]
 }
 
 const Header = ({ favoritos }: Props) => {
+  const dispatch = useDispatch()
   const itensNoCarrinho = useSelector(
     (state: RootState) => state.cart.items
   ) as Produto[]
@@ -30,6 +32,11 @@ const Header = ({ favoritos }: Props) => {
         <span>
           {itensNoCarrinho.length} itens, valor total: {paraReal(valorTotal)}
         </span>
+        {itensNoCarrinho.length > 0 && (
+          <S.ClearButton onClick={() => dispatch(clearCart())} type="button">
+            Limpar carrinho
+          </S.ClearButton>
+        )}
       </div>
     </S.Header>
   )

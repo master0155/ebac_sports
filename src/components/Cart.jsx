@@ -2,37 +2,37 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeItem, clearCart } from '../src/store/cartSlice'
 
 const Cart = () => {
-  const items = useSelector((state) => state.cart.items)
-  const dispatch = useDispatch()
+    const items = useSelector((state) => state.cart.items)
+    const dispatch = useDispatch()
 
-  const handleRemove = (id) => {
+    const handleRemove = (id) => {
     dispatch(removeItem(id))
-  }
+}
 
-  const handleClear = () => {
+    const handleClear = () => {
     dispatch(clearCart())
-  }
+}
 
-  return (
+return (
     <div>
-      <h2>Carrinho</h2>
-      {items.length === 0 ? (
+        <h2>Carrinho</h2>
+        {items.length === 0 ? (
         <p>Seu carrinho esta vazio</p>
-      ) : (
+    ) : (
         <ul>
-          {items.map((item) => (
+        {items.map((item) => (
             <li key={item.id}>
-              {item.nome} - R$ {item.preco}
-              <button onClick={() => handleRemove(item.id)}>Remover</button>
+            {item.nome} - R$ {item.preco}
+            <button onClick={() => handleRemove(item.id)}>Remover</button>
             </li>
-          ))}
+        ))}
         </ul>
-      )}
-      {items.length > 0 && (
+    )}
+    {items.length > 0 && (
         <button onClick={handleClear}>Limpar carrinho</button>
-      )}
+    )}
     </div>
-  )
+)
 }
 
 export default Cart

@@ -43,3 +43,24 @@ export const Header = styled.header`
     }
   }
 `
+
+export const ClearButton = styled.button`
+  margin-left: 16px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid ${cores.corFundo};
+  background: transparent;
+  color: ${cores.corFundo};
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${cores.corFundo};
+    color: ${cores.corPrincipal};
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+`
