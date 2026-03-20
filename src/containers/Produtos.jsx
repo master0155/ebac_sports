@@ -1,9 +1,14 @@
 import { useDispatch } from 'react-redux'
-import { addItem } from '../store/cartSlice'
+import { addItem } from '../src/store/cartSlice'
 import Produto from '../components/Produto'
 import * as S from './styles'
 
-const ProdutosComponent = ({ produtos, favoritos, favoritar, adicionarAoCarrinho }) => {
+const ProdutosComponent = ({
+  produtos,
+  favoritos,
+  favoritar,
+  adicionarAoCarrinho
+}) => {
   const dispatch = useDispatch()
 
   const produtoEstaNosFavoritos = (produto) => {
